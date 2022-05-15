@@ -75,4 +75,3 @@ class UsersListView(ListAPIView):
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filter_fields = ["username", "age"]
     search_fields = ["username", "age"]
-

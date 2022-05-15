@@ -25,10 +25,7 @@ class Migration(migrations.Migration):
                 ("name", models.CharField(max_length=100)),
                 ("slug", models.SlugField(max_length=110)),
             ],
-            options={
-                "verbose_name": "Actor",
-                "verbose_name_plural": "Actors",
-            },
+            options={"verbose_name": "Actor", "verbose_name_plural": "Actors",},
         ),
         migrations.CreateModel(
             name="Genres",
@@ -45,10 +42,7 @@ class Migration(migrations.Migration):
                 ("title", models.CharField(max_length=100, unique=True)),
                 ("slug", models.SlugField(max_length=110)),
             ],
-            options={
-                "verbose_name": "Genre",
-                "verbose_name_plural": "Genres",
-            },
+            options={"verbose_name": "Genre", "verbose_name_plural": "Genres",},
         ),
         migrations.CreateModel(
             name="Producer",
@@ -65,10 +59,7 @@ class Migration(migrations.Migration):
                 ("name", models.CharField(max_length=100)),
                 ("slug", models.SlugField(max_length=110)),
             ],
-            options={
-                "verbose_name": "Producer",
-                "verbose_name_plural": "Producers",
-            },
+            options={"verbose_name": "Producer", "verbose_name_plural": "Producers",},
         ),
         migrations.CreateModel(
             name="Movies",
@@ -115,9 +106,6 @@ class Migration(migrations.Migration):
                     models.ManyToManyField(related_name="movies", to="movies.producer"),
                 ),
             ],
-            options={
-                "verbose_name": "Movie",
-                "verbose_name_plural": "Movies",
-            },
+            options={"verbose_name": "Movie", "verbose_name_plural": "Movies",},
         ),
     ]

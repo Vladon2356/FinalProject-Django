@@ -20,6 +20,7 @@ class UserDetail(LoginRequiredMixin, DetailView):
     template_name = "cinema/users/user_detail.html"
     context_object_name = "user"
     login_url = reverse_lazy("account_login")
+
     def get_queryset(self):
 
         return CustomUser.objects.filter(pk=self.kwargs["pk"])

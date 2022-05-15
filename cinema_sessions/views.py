@@ -27,7 +27,6 @@ class SessionDetail(DetailView):
     template_name = "cinema/sessions/session_detail.html"
     context_object_name = "session"
 
-
     def get_queryset(self):
         return Sessions.objects.filter(pk=self.kwargs["pk"], is_active=True)
 

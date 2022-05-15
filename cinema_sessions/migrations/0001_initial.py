@@ -48,9 +48,6 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "verbose_name": "Session",
-                "verbose_name_plural": "Sessions",
-            },
+            options={"verbose_name": "Session", "verbose_name_plural": "Sessions",},
         ),
     ]

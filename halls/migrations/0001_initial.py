@@ -27,9 +27,6 @@ class Migration(migrations.Migration):
                 ("rows", models.SmallIntegerField()),
                 ("columns", models.SmallIntegerField()),
             ],
-            options={
-                "verbose_name": "Hall",
-                "verbose_name_plural": "Halls",
-            },
+            options={"verbose_name": "Hall", "verbose_name_plural": "Halls",},
         ),
     ]
