@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load sessions_tag %}
+{% block title %}List halls {% endblock %}
+{% block slider_title %}List halls {% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                {% for item in halls %}
+                    <div class="card" style="width: 50rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.title }}</h5>
+                            <h5>Rows: {{ item.rows }}</h5>
+                            <h5>Columns: {{ item.columns }}</h5>
+                            {% for row in item.rows|range %}
+                                <div class="row-{{ row }}">
+                                    {% for column in item.columns|range %}
+                                        <span class="badge bg-info" id="{{ row }}-{{ column }}"
+                                              style="height: 1rem; width: 1rem"> </span>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

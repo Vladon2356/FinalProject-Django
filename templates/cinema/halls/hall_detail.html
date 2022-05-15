@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load sessions_tag %}
+{% block slider_title %}{{ hall.title }}{% endblock %}
+{% block content %}
+    <div class="container box_1170">
+        <h1>{{ hall.title }}</h1>
+        <h3 class="text-heading">Rows : {{ hall.rows }}</h3>
+        <h3 class="text-heading">Columns : {{ hall.columns }}</h3>
+        {% for row in hall.rows|range %}
+            <div class="row-{{ row }}">
+                {% for column in hall.columns|range %}
+                    <span class="badge bg-info" id="{{ row }}-{{ column }}"
+                          style="height: 1rem; width: 1rem"> </span>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
