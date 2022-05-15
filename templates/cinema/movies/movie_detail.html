@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block slider %}
+    <div class="slider_area">
+        <div class="single_slider  d-flex align-items-center slider_bg_spider overlay2"
+             style="background-image: url({{ movie.poster.url }})">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="slider_text text-center ">
+                            <h3>{{ movie.title }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+
+    <section class="sample-text-area">
+        <div class="container box_1170">
+            <h3 class="text-heading">{{ movie.title }}</h3>
+            <p class="sample-text">
+                {{ movie.description }}
+            </p>
+            <h3>Year : {{ movie.year }}</h3>
+            <h3>Duration : {{ movie.duration }}хв</h3>
+            <h3>Genres : {% for genre in movie.genres.all %}
+                {{ genre.title }}
+            {% endfor %}
+            </h3>
+            <h3>Actors : {% for actor in movie.actors.all %}
+                {{ actor.name }}
+            {% endfor %}
+            </h3>
+            <h3>Producers :  {% for producer in movie.producer.all %}
+                {{ producer.name }}
+            {% endfor %}</h3>
+            <h3>Rate : {{ movie.age_rating }}</h3>
+            <a href="{% url 'session_by_movie' movie.slug %}"
+               class="btn btn-success">Sesssions</a>
+            {% if user.is_superuser %}
+                <a href="{% url 'main_page' %}admin/movies/movies/{{ movie.pk }}/change/"
+                   class="btn btn-info">Edit</a>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

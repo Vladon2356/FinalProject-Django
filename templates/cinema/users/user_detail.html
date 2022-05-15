@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Profile {% endblock %}
+{% block slider_title %} Profile {% endblock %}
+{% block content %}
+    <div class="card" style="width: 50rem;">
+        <div class="card-body">
+            <h5 class="card-text">Username : {{ user.username }}</h5>
+            <h5 class="card-text">Tickets :</h5>
+            {% for ticket in tickets %}
+                <div class="card" style="width: 30rem;">
+
+                    <div class="card-body">
+                        <p class="card-text">Session start at : {{ ticket.session.start_at }}</p>
+                        <p class="card-text">Session end at : {{ ticket.session.end_at }}</p>
+                        <p class="card-text">Row : {{ ticket.row }}</p>
+                        <p class="card-text">Place : {{ ticket.column }}</p>
+                        <p class="card-text">Price : {{ ticket.ticket_price }}</p>
+                        {% if ticket.is_active %}
+                            <p class="alert-success">Active</p>
+                            {# <input class="btn btn-success" type="submit" value="Download pdf">#}
+                        {% else %}
+                            <p class="alert-danger">Passed</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
