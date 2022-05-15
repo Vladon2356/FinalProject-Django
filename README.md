@@ -69,7 +69,7 @@
     ```sh
     $ mkdir app
     $ cd app 
-    $ git clone https://github.com/gocardless/sample-django-app.git
+    $ git clone https://github.com/Vladon2356/FinaleProject-Django.git
     ```
 2. Up docker container
     ```sh
