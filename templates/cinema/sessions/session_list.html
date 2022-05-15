@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block slider %}
+    <div class="slider_area">
+        <div class="single_slider  d-flex align-items-center slider_bg_spider overlay2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="slider_text text-center ">
+                            <h3>Sessions</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                {% for session in sessions %}
+                    <div class="card" style="width: 50rem;">
+                        <img src="{{ session.movie.poster.url }}" class="card-img-top">
+                        <div class="card-body">
+                            <div class="card-body">
+                                <h2>Movie: {{ session.movie.title }}</h2>
+                                <h5>Hall: {{ session.hall.title }}</h5>
+                                <h5>Date: {{ session.date }}</h5>
+                                <h5>Start: {{ session.start_at }}</h5>
+                                <h5>End: {{ session.end_at }}</h5>
+                            </div>
+                        </div>
+                        <a href="{% url 'session_detail' session.pk %}"
+                           class="btn">Detail</a>
+                        {% if user.is_superuser %}
+                            <a href="{% url 'main_page' %}admin/cinema_sessions/sessions/{{ session.pk }}/change/"
+                               class="btn">Edit</a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

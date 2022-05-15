@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load sessions_tag %}
+{% block title %}{{ session.movie.title }}{% endblock %}
+{% block slider %}
+    <div class="slider_area">
+        <div class="single_slider  d-flex align-items-center slider_bg_spider overlay2"
+             style="background-image: url({{ session.movie.poster.url}})">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="slider_text text-center ">
+                            <h3>{{ session.movie.title }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+
+                <div class="card" style="width: 50rem;">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ session.movie.title }}</h2>
+                        <h5>Hall: {{ session.hall.title }}</h5>
+                        <p class="card-text">{{ session.movie.description }}</p>
+                        <h5>Rate: {{ session.movie.age_rating }}</h5>
+                        <h5>Date: {{ session.date }}</h5>
+                        <h5>Start: {{ session.start_at }}</h5>
+                        <h5>End: {{ session.end_at }}</h5>
+                        <h5>Places</h5>
+                  {% for row in session.hall.rows|range %}
+                    <div class="row-{{ row }}">
+                        {% for column in session.hall.columns|range %}
+
+                            <span {% check_ticket session.id row column as sold %}
+                                          {% if sold %}
+                                              class="badge bg-secondary"
+                                          {% else %}
+                                              class="badge bg-info"
+                                          {% endif %}
+                            id="{{ row }}-{{ column }}"
+                            style="height: 1rem; width: 1rem">
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
+                <a href="{% url 'session_buy_ticket' pk=session.pk %}"
+                   class="btn btn-success">Buy ticket</a>
+                    </div>
+                </div>
+
+{% endblock %}
