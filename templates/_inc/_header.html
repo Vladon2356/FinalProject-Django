@@ -1,0 +1,31 @@
+<header>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area">
+            <div class="container-fluid">
+                <div class="header_bottom_border">
+                    <div class="row align-items-center">
+                        <div class="col-xl-6 col-lg-7">
+                            <div class="main-menu  d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="{% url 'sessions_list' %}">Sessions</a></li>
+                                        <li><a href="{% url 'session_search' %}">Sessions search</a></li>
+                                        <li><a href="{% url 'movies_list' %}">Now in rental</a></li>
+                                        <li><a href="{% url 'halls_list' %}">Halls</a></li>
+                                        {% if user.is_authenticated %}
+                                            <li><a href="{% url 'profile' user.pk %}">Profile</a></li>|
+                                            <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                                        {% else %}
+                                            <li><a href="{% url 'account_login' %}">Login</a></li>|
+                                            <li><a href="{% url 'account_signup' %}">Sign up</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
