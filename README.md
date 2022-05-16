@@ -67,9 +67,8 @@
 
 1. Clone the repository:
     ```sh
-    $ mkdir app
-    $ cd app 
     $ git clone https://github.com/Vladon2356/FinaleProject-Django.git
+    $ cd FinaleProject-Django
     ```
 2. Up docker container
     ```sh
